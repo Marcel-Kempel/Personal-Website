@@ -2,7 +2,14 @@
 
 Personal portfolio/CV website for Marcel Kempel, focused on Wirtschaftsinformatik, Prozessautomatisierung, Digitalisierung, Datenanalyse, Reporting and practical IT implementation.
 
-The project is a Vite + React + TypeScript single page app with explicit routes for:
+## Project Structure
+
+- `frontend/` contains the Vite + React + TypeScript website.
+- `backend/` is reserved for future API/server code. It is intentionally empty for now because contact currently uses `mailto:` links only.
+- `LEGAL_PUBLISH_CHECKLIST.md` contains the pre-publish legal checklist for Germany.
+- `vercel.json` keeps deployment settings at the repository root.
+
+The frontend has explicit client routes for:
 
 - `/`
 - `/projekte/anfrageprozess-digitalisieren`
@@ -12,11 +19,11 @@ The project is a Vite + React + TypeScript single page app with explicit routes 
 - `/impressum`
 - `/datenschutz`
 
-Vercel rewrites are configured in `vercel.json` so direct visits to project and legal routes load the app correctly. The contact area lives at the bottom of the homepage via `/#kontakt`.
+The contact area lives at the bottom of the homepage via `/#kontakt`.
 
 ## Local Development
 
-Install dependencies:
+Install dependencies from the repository root:
 
 ```bash
 npm install
@@ -48,25 +55,26 @@ npm run preview
 
 ## Deploying on Vercel
 
-Use the **Vite** framework preset, or keep the repository defaults from `vercel.json`.
+Use the Vite framework preset, or keep the repository defaults from `vercel.json`.
 
 Vercel settings:
 
 - Install Command: `npm install`
 - Build Command: `npm run build`
-- Output Directory: `dist`
+- Output Directory: `frontend/dist`
 - Development Command: `npm run dev`
+- Root Directory: leave empty / repository root
 
 The project includes:
 
 - `vercel.json` with `installCommand`, `buildCommand`, `outputDirectory`, and SPA rewrites
-- `public/_redirects` for Netlify-style fallback support if the host ever changes
-- metadata in `index.html` for title, description and Open Graph basics
+- `frontend/public/_redirects` for Netlify-style fallback support if the host ever changes
+- metadata in `frontend/index.html` for title, description and Open Graph basics
 - `mailto:` contact links only; no backend contact form is configured
 
 ## Before Publishing
 
-Update `src/app/content.ts` before going live:
+Update `frontend/src/app/content.ts` before going live:
 
 - replace the legal address placeholders with a real ladungsfähige Anschrift
 - confirm the public contact email

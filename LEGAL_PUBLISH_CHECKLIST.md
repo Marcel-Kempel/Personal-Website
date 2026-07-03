@@ -8,7 +8,7 @@ Diese Checkliste ist eine technische Vorbereitung und keine Rechtsberatung. Vor 
 - MStV: Verantwortlichen nach § 18 Abs. 2 MStV angeben, wenn Inhalte redaktionell wirken können.
 - Datenschutz: Hosting-Anbieter, Server-Logfiles und Kontaktaufnahme per E-Mail müssen zur Realität passen.
 - Datenschutz: Wenn später Tracking, Analytics, externe Fonts, eingebettete Medien, Newsletter oder ein Kontaktformular ergänzt werden, Datenschutzerklärung und ggf. Consent-Banner aktualisieren.
-- Kontakt: `src/app/content.ts` mit echter E-Mail, LinkedIn-URL und GitHub-URL aktualisieren.
+- Kontakt: `frontend/src/app/content.ts` mit echter E-Mail, LinkedIn-URL und GitHub-URL aktualisieren.
 - Keine Platzhalter veröffentlichen: `Straße und Hausnummer ergänzen`, `PLZ Ort ergänzen`, `Hosting-Anbieter ergänzen` ersetzen.
 
 Nützliche Quellen:
