@@ -135,6 +135,23 @@
 
   html {
     font-size: var(--font-size);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    min-width: 0;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(59, 95, 219, 0.18);
   }
 
   h1 {
