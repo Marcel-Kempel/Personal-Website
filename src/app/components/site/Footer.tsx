@@ -3,7 +3,7 @@ import { siteConfig } from "../../content";
 const footerLinks = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
-  { label: "Kontakt", href: "/kontakt" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 
 export function Footer() {

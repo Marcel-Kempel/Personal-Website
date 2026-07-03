@@ -55,7 +55,7 @@ export function Navbar() {
         </nav>
 
         <a
-          href="/kontakt"
+          href="/#kontakt"
           className="hidden min-h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:inline-flex"
         >
           Kontakt
@@ -92,7 +92,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/kontakt"
+            href="/#kontakt"
             onClick={() => setOpen(false)}
             className="mt-3 inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >

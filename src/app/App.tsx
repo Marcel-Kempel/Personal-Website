@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Footer } from "./components/site/Footer";
 import { Navbar } from "./components/site/Navbar";
-import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
 import { LegalPage, legalPages } from "./pages/LegalPage";
 
@@ -45,13 +44,18 @@ function useHashScroll(pathname: string) {
 export default function App() {
   const pathname = usePathname();
   useHashScroll(pathname);
+  useEffect(() => {
+    if (pathname === "/kontakt") {
+      window.location.replace("/#kontakt");
+    }
+  }, [pathname]);
+
   const legalPage = legalPages[pathname as keyof typeof legalPages];
-  const isContactPage = pathname === "/kontakt";
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
-      <main>{legalPage ? <LegalPage page={legalPage} /> : isContactPage ? <ContactPage /> : <HomePage />}</main>
+      <main>{legalPage ? <LegalPage page={legalPage} /> : <HomePage />}</main>
       <Footer />
     </div>
   );

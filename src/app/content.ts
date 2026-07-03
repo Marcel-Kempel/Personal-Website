@@ -36,7 +36,7 @@ export const navLinks = [
   { label: "Projekte", href: "/#projekte" },
   { label: "Skills", href: "/#skills" },
   { label: "Lebenslauf", href: "/#lebenslauf" },
-  { label: "Kontakt", href: "/kontakt" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 
 export const pillars = [
