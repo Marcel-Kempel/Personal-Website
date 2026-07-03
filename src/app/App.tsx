@@ -6,10 +6,11 @@ import { HomePage } from "./pages/HomePage";
 import { LegalPage, legalPages } from "./pages/LegalPage";
 
 function usePathname() {
-  const [pathname, setPathname] = useState(() => window.location.pathname);
+  const normalizePathname = (value: string) => (value.length > 1 ? value.replace(/\/+$/, "") : value);
+  const [pathname, setPathname] = useState(() => normalizePathname(window.location.pathname));
 
   useEffect(() => {
-    const handleLocationChange = () => setPathname(window.location.pathname);
+    const handleLocationChange = () => setPathname(normalizePathname(window.location.pathname));
 
     window.addEventListener("popstate", handleLocationChange);
     window.addEventListener("pushstate", handleLocationChange);
