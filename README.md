@@ -68,9 +68,15 @@ Vercel settings:
 The project includes:
 
 - `vercel.json` with `installCommand`, `buildCommand`, `outputDirectory`, and SPA rewrites
+- deployment security headers for CSP, HSTS, framing protection, MIME sniffing protection, referrer policy and browser permissions
 - `frontend/public/_redirects` for Netlify-style fallback support if the host ever changes
+- `frontend/public/.well-known/security.txt` with the public security contact
 - metadata in `frontend/index.html` for title, description and Open Graph basics
 - `mailto:` contact links only; no backend contact form is configured
+
+## Security
+
+This is currently a static frontend without login, cookies, server-side sessions or state-changing requests. CSRF tokens are therefore not implemented in the frontend because there is no backend action to protect. If a backend is added later, follow the CSRF requirements in `backend/README.md` before adding any write endpoints.
 
 ## Before Publishing
 
@@ -80,5 +86,6 @@ Update `frontend/src/app/content.ts` before going live:
 - confirm the public contact email
 - add real LinkedIn and GitHub URLs if desired
 - replace the hosting provider placeholder in `legalConfig`
+- update `frontend/public/.well-known/security.txt` if the public contact email or domain changes
 
 Also review `LEGAL_PUBLISH_CHECKLIST.md`. The current Impressum and Datenschutz pages are structurally prepared placeholders, not a substitute for individual legal advice.

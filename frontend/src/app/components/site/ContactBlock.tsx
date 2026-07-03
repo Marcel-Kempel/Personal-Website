@@ -3,6 +3,17 @@ import { siteConfig } from "../../content";
 import { ButtonLink } from "./ButtonLink";
 import { SectionHeader } from "./SectionHeader";
 
+function getSafeProfileHref(value: string) {
+  if (!value) return undefined;
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" ? url.toString() : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 const contactItems = [
   {
     icon: Mail,
@@ -14,13 +25,13 @@ const contactItems = [
     icon: Linkedin,
     label: "LinkedIn",
     value: siteConfig.linkedinLabel,
-    href: siteConfig.linkedinUrl || undefined,
+    href: getSafeProfileHref(siteConfig.linkedinUrl),
   },
   {
     icon: Github,
     label: "GitHub",
     value: siteConfig.githubLabel,
-    href: siteConfig.githubUrl || undefined,
+    href: getSafeProfileHref(siteConfig.githubUrl),
   },
   {
     icon: MapPin,
