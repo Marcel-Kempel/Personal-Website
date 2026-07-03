@@ -5,10 +5,14 @@ Personal portfolio/CV website for Marcel Kempel, focused on Wirtschaftsinformati
 The project is a Vite + React + TypeScript single page app with explicit routes for:
 
 - `/`
+- `/projekte/anfrageprozess-digitalisieren`
+- `/projekte/excel-daten-zu-dashboard`
+- `/projekte/bpmn-zu-digitalem-ablauf`
+- `/projekte/internes-mini-tool`
 - `/impressum`
 - `/datenschutz`
 
-Vercel rewrites are configured in `vercel.json` so direct visits to legal routes load the app correctly. The contact area lives at the bottom of the homepage via `/#kontakt`.
+Vercel rewrites are configured in `vercel.json` so direct visits to project and legal routes load the app correctly. The contact area lives at the bottom of the homepage via `/#kontakt`.
 
 ## Local Development
 

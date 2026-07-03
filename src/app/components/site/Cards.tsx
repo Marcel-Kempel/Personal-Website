@@ -1,26 +1,23 @@
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import { clsx } from "clsx";
+import type { Project } from "../../content";
 
 export function ProjectCard({
   project,
 }: {
-  project: {
-    label: string;
-    title: string;
-    description: string;
-    tags: string[];
-    featured?: boolean;
-  };
+  project: Project;
 }) {
   return (
-    <motion.article
+    <motion.a
+      href={`/projekte/${project.slug}`}
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 320, damping: 25 }}
       className={clsx(
-        "group flex h-full flex-col rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.08)]",
+        "group flex h-full flex-col rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         project.featured ? "border-[#3B5FDB]/35 ring-1 ring-[#3B5FDB]/15" : "border-border"
       )}
+      aria-label={`Projekt ${project.title} öffnen`}
     >
       <div className="mb-6 flex items-center justify-between gap-3">
         <span className="rounded bg-muted px-2.5 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
@@ -48,10 +45,10 @@ export function ProjectCard({
       </div>
 
       <div className="mt-7 flex items-center gap-2 border-t border-border pt-4 text-sm font-semibold text-muted-foreground">
-        Detailseite vorbereiten
+        Mehr zum Projekt
         <ExternalLink size={14} aria-hidden="true" />
       </div>
-    </motion.article>
+    </motion.a>
   );
 }
 

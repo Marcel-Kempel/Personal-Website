@@ -3,6 +3,8 @@ import { Footer } from "./components/site/Footer";
 import { Navbar } from "./components/site/Navbar";
 import { HomePage } from "./pages/HomePage";
 import { LegalPage, legalPages } from "./pages/LegalPage";
+import { ProjectDetailPage } from "./pages/ProjectDetailPage";
+import { getProjectBySlug } from "./content";
 
 function usePathname() {
   const normalizePathname = (value: string) => (value.length > 1 ? value.replace(/\/+$/, "") : value);
@@ -51,11 +53,13 @@ export default function App() {
   }, [pathname]);
 
   const legalPage = legalPages[pathname as keyof typeof legalPages];
+  const projectSlug = pathname.match(/^\/projekte\/([^/]+)$/)?.[1];
+  const project = projectSlug ? getProjectBySlug(decodeURIComponent(projectSlug)) : undefined;
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
-      <main>{legalPage ? <LegalPage page={legalPage} /> : <HomePage />}</main>
+      <main>{legalPage ? <LegalPage page={legalPage} /> : project ? <ProjectDetailPage project={project} /> : <HomePage />}</main>
       <Footer />
     </div>
   );
