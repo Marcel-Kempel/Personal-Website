@@ -1,7 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import { clsx } from "clsx";
-import type { Project } from "../../content";
+import type { Project } from "../../data/projects";
 
 export function ProjectCard({
   project,

@@ -7,3 +7,10 @@
 
   ➜  Local:   http://127.0.0.1:5173/
   ➜  press h + enter to show help
+19:52:08 [vite] (client) hmr update /src/app/App.tsx, /src/styles/index.css, /src/app/pages/LegalPage.tsx, /src/app/pages/HomePage.tsx, /src/app/pages/ProjectDetailPage.tsx, /src/app/components/site/Footer.tsx, /src/app/components/site/Navbar.tsx, /@fs/C:\Users\Makec\OneDrive\Desktop\Personal Website\frontend\src\app\components\site\ContactBlock.tsx, /@fs/C:\Users\Makec\OneDrive\Desktop\Personal Website\frontend\src\app\components\site\ProcessFlow.tsx
+19:52:08 [vite] (client) hmr invalidate /src/app/pages/LegalPage.tsx Could not Fast Refresh ("legalPages" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+19:52:08 [vite] (client) hmr update /src/app/App.tsx, /src/styles/index.css
+19:52:45 [vite] (client) hmr update /src/app/App.tsx, /src/styles/index.css
+19:52:45 [vite] (client) hmr update /src/app/pages/HomePage.tsx, /src/styles/index.css
+19:52:45 [vite] (client) hmr update /@fs/C:\Users\Makec\OneDrive\Desktop\Personal Website\frontend\src\app\components\site\Cards.tsx, /src/styles/index.css
+19:52:45 [vite] (client) hmr update /src/app/pages/ProjectDetailPage.tsx, /src/styles/index.css

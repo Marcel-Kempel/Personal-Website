@@ -4,11 +4,11 @@ import {
   focusAreas,
   pillars,
   profileFacts,
-  projects,
   roadmapSteps,
   skillGroups,
   timelineItems,
 } from "../content";
+import { projects } from "../data/projects";
 import { ButtonLink, PlaceholderButton } from "../components/site/ButtonLink";
 import { FocusCard, ProjectCard, SkillGroup } from "../components/site/Cards";
 import { ContactBlock } from "../components/site/ContactBlock";

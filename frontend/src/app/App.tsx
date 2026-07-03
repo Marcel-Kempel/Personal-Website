@@ -3,8 +3,9 @@ import { Footer } from "./components/site/Footer";
 import { Navbar } from "./components/site/Navbar";
 import { HomePage } from "./pages/HomePage";
 import { LegalPage, legalPages } from "./pages/LegalPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
-import { getProjectBySlug } from "./content";
+import { getProjectBySlug } from "./data/projects";
 
 function usePathname() {
   const normalizePathname = (value: string) => (value.length > 1 ? value.replace(/\/+$/, "") : value);
@@ -55,11 +56,25 @@ export default function App() {
   const legalPage = legalPages[pathname as keyof typeof legalPages];
   const projectSlug = pathname.match(/^\/projekte\/([^/]+)$/)?.[1];
   const project = projectSlug ? getProjectBySlug(decodeURIComponent(projectSlug)) : undefined;
+  const isKnownRoute = pathname === "/" || Boolean(legalPage) || Boolean(project);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <a className="skip-link" href="#main-content">
+        Zum Inhalt springen
+      </a>
       <Navbar />
-      <main>{legalPage ? <LegalPage page={legalPage} /> : project ? <ProjectDetailPage project={project} /> : <HomePage />}</main>
+      <main id="main-content">
+        {legalPage ? (
+          <LegalPage page={legalPage} />
+        ) : project ? (
+          <ProjectDetailPage project={project} />
+        ) : isKnownRoute ? (
+          <HomePage />
+        ) : (
+          <NotFoundPage />
+        )}
+      </main>
       <Footer />
     </div>
   );

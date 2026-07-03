@@ -1,6 +1,6 @@
 import { ArrowLeft, CheckCircle2, ImageIcon } from "lucide-react";
-import type { Project } from "../content";
-import { projects } from "../content";
+import type { Project } from "../data/projects";
+import { projects } from "../data/projects";
 
 export function ProjectDetailPage({ project }: { project: Project }) {
   return (
