@@ -3,8 +3,7 @@ import { siteConfig } from "../../content";
 const footerLinks = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
-  { label: "LinkedIn", href: "/#kontakt" },
-  { label: "GitHub", href: "/#kontakt" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export function Footer() {
@@ -12,7 +11,7 @@ export function Footer() {
     <footer className="border-t border-border bg-secondary/50">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-9 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
-          <p className="text-sm font-bold text-foreground">{siteConfig.name}</p>
+          <p className="text-base font-extrabold text-foreground">{siteConfig.name}</p>
           <p className="mt-1 max-w-sm text-xs leading-5 text-muted-foreground">
             Portfolio für Wirtschaftsinformatik, Prozessautomatisierung und Datenanalyse
           </p>

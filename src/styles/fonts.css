@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,450;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
-
 :root {
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Segoe UI', Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Segoe UI', Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Cascadia Mono', 'Segoe UI Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 body {

@@ -33,10 +33,13 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6">
         <a
           href="/"
-          className="rounded-sm text-sm font-bold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+          className="group flex items-center gap-3 rounded-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           onClick={() => setOpen(false)}
         >
-          {siteConfig.name}
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-sm font-extrabold text-primary-foreground shadow-[0_10px_24px_rgba(13,21,32,0.12)] transition group-hover:bg-[#243755]">
+            {siteConfig.initials}
+          </span>
+          <span className="text-base font-extrabold tracking-tight sm:text-lg">{siteConfig.name}</span>
         </a>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Hauptnavigation">
@@ -52,7 +55,7 @@ export function Navbar() {
         </nav>
 
         <a
-          href="/#kontakt"
+          href="/kontakt"
           className="hidden min-h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:inline-flex"
         >
           Kontakt
@@ -89,7 +92,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/#kontakt"
+            href="/kontakt"
             onClick={() => setOpen(false)}
             className="mt-3 inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >

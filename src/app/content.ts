@@ -1,17 +1,42 @@
 export const siteConfig = {
   name: "Marcel Kempel",
-  email: "marcel.kempel@example.com",
+  initials: "MK",
+  email: "kontakt@marcel-kempel.de",
   linkedinLabel: "LinkedIn Profil ergänzen",
+  linkedinUrl: "",
   githubLabel: "GitHub Profil ergänzen",
+  githubUrl: "",
   location: "Hessen, Deutschland",
 };
+
+export const legalConfig = {
+  ownerName: "Marcel Kempel",
+  addressLine1: "Straße und Hausnummer ergänzen",
+  addressLine2: "PLZ Ort ergänzen",
+  country: "Deutschland",
+  email: siteConfig.email,
+  phone: "",
+  responsibleForContent: "Marcel Kempel",
+  hostingProvider: "Hosting-Anbieter ergänzen",
+  hostingProviderPrivacyUrl: "",
+  lastUpdated: "Juli 2026",
+};
+
+export function hasMissingLegalData() {
+  return [
+    legalConfig.addressLine1,
+    legalConfig.addressLine2,
+    legalConfig.hostingProvider,
+    siteConfig.email,
+  ].some((value) => /ergänzen|example|deine-domain/i.test(value));
+}
 
 export const navLinks = [
   { label: "Über mich", href: "/#ueber-mich" },
   { label: "Projekte", href: "/#projekte" },
   { label: "Skills", href: "/#skills" },
   { label: "Lebenslauf", href: "/#lebenslauf" },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export const pillars = [
