@@ -71,8 +71,22 @@ The project includes:
 - deployment security headers for CSP, HSTS, framing protection, MIME sniffing protection, referrer policy and browser permissions
 - `frontend/public/_redirects` for Netlify-style fallback support if the host ever changes
 - `frontend/public/.well-known/security.txt` with the public security contact
+- `frontend/public/og-image.png` for LinkedIn, WhatsApp and other social previews
 - metadata in `frontend/index.html` for title, description and Open Graph basics
+- a real 404 page for unknown routes
 - `mailto:` contact links only; no backend contact form is configured
+
+## Adding Projects
+
+Add or edit portfolio projects in `frontend/src/app/data/projects.ts`.
+
+Each project object automatically creates:
+
+- a homepage card
+- a detail page at `/projekte/<slug>`
+- related project links on other project detail pages
+
+See `frontend/src/app/data/README.md` for the short checklist and allowed visual variants.
 
 ## Security
 
@@ -87,5 +101,6 @@ Update `frontend/src/app/content.ts` before going live:
 - add real LinkedIn and GitHub URLs if desired
 - replace the hosting provider placeholder in `legalConfig`
 - update `frontend/public/.well-known/security.txt` if the public contact email or domain changes
+- update the Open Graph domain in `frontend/index.html` if the final production domain is not `marcel-kempel.de`
 
 Also review `LEGAL_PUBLISH_CHECKLIST.md`. The current Impressum and Datenschutz pages are structurally prepared placeholders, not a substitute for individual legal advice.

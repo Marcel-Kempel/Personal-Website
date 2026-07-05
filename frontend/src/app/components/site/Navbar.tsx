@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
 import { navLinks, siteConfig } from "../../content";
@@ -6,6 +6,8 @@ import { navLinks, siteConfig } from "../../content";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateScrolled = () => setScrolled(window.scrollY > 12);
@@ -18,6 +20,28 @@ export function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      mobileMenuRef.current?.querySelector<HTMLElement>("a")?.focus();
+    });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+
+      setOpen(false);
+      menuButtonRef.current?.focus();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
@@ -62,11 +86,13 @@ export function Navbar() {
         </a>
 
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={() => setOpen((value) => !value)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
           aria-expanded={open}
           aria-controls="mobile-navigation"
+          aria-haspopup="true"
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
         >
           {open ? <X size={19} aria-hidden="true" /> : <Menu size={19} aria-hidden="true" />}
@@ -75,6 +101,7 @@ export function Navbar() {
 
       <div
         id="mobile-navigation"
+        ref={mobileMenuRef}
         className={clsx(
           "md:hidden",
           open ? "pointer-events-auto border-t border-border" : "pointer-events-none hidden"

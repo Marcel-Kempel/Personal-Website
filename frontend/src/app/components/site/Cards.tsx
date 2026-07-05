@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import { motion } from "motion/react";
 import { clsx } from "clsx";
 import type { Project } from "../../data/projects";
 
@@ -9,12 +8,10 @@ export function ProjectCard({
   project: Project;
 }) {
   return (
-    <motion.a
+    <a
       href={`/projekte/${project.slug}`}
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 320, damping: 25 }}
       className={clsx(
-        "group flex h-full flex-col rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "interactive-card group flex h-full flex-col rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         project.featured ? "border-[#3B5FDB]/35 ring-1 ring-[#3B5FDB]/15" : "border-border"
       )}
       aria-label={`Projekt ${project.title} öffnen`}
@@ -48,7 +45,7 @@ export function ProjectCard({
         Mehr zum Projekt
         <ExternalLink size={14} aria-hidden="true" />
       </div>
-    </motion.a>
+    </a>
   );
 }
 
@@ -62,17 +59,15 @@ export function FocusCard({
   text: string;
 }) {
   return (
-    <motion.article
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 320, damping: 25 }}
-      className="h-full rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.07)]"
+    <article
+      className="interactive-card h-full rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-[0_16px_38px_rgba(13,21,32,0.07)]"
     >
       <p className="mb-5 font-mono text-[0.68rem] font-semibold tracking-[0.18em] text-[#3B5FDB]">
         {number}
       </p>
       <h3 className="text-base font-bold text-foreground">{title}</h3>
       <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
-    </motion.article>
+    </article>
   );
 }
 

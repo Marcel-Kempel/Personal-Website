@@ -1,5 +1,4 @@
 import { Download } from "lucide-react";
-import { motion } from "motion/react";
 import {
   focusAreas,
   pillars,
@@ -37,53 +36,36 @@ function HeroSection() {
     <section className="flex min-h-[88svh] items-center pt-24">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-16 lg:pb-20">
         <div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="hero-reveal hero-delay-0">
             <SectionLabel>Portfolio / Wirtschaftsinformatik / Prozessautomatisierung</SectionLabel>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-4xl text-balance text-[2rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.06] lg:text-[3.5rem]"
+          <h1
+            className="hero-reveal hero-delay-1 max-w-4xl text-balance text-[2rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.06] lg:text-[3.5rem]"
           >
             Wirtschaftsinformatik zwischen Prozessen, Daten und Umsetzung.
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground"
+          <p
+            className="hero-reveal hero-delay-2 mt-7 max-w-2xl text-lg leading-8 text-muted-foreground"
           >
             Ich verbinde betriebswirtschaftliches Prozessverständnis mit technischer Umsetzung -
             mit Fokus auf Automatisierung, Digitalisierung und datenbasierte Verbesserung.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
+          <div
+            className="hero-reveal hero-delay-3 mt-9 flex flex-col gap-3 sm:flex-row"
           >
             <ButtonLink href="#projekte">Projekte ansehen</ButtonLink>
             <ButtonLink href="#lebenslauf" variant="secondary">
               Lebenslauf anzeigen
             </ButtonLink>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="hero-reveal hero-delay-4">
           <ProcessFlow />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ export function NotFoundPage() {
         <div className="mt-8">
           <a
             href="/"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(13,21,32,0.12)] transition hover:-translate-y-0.5 hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0"
+            className="button-link inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_24px_rgba(13,21,32,0.12)] transition hover:bg-[#243755] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <ArrowLeft size={15} aria-hidden="true" />
             Zur Startseite
@@ -35,7 +35,7 @@ export function NotFoundPage() {
             <a
               key={project.slug}
               href={`/projekte/${project.slug}`}
-              className="rounded-lg border border-border bg-card p-4 text-sm font-semibold text-foreground shadow-sm transition hover:-translate-y-0.5 hover:border-[#3B5FDB]/35 hover:shadow-[0_12px_30px_rgba(13,21,32,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="interactive-card rounded-lg border border-border bg-card p-4 text-sm font-semibold text-foreground shadow-sm transition hover:border-[#3B5FDB]/35 hover:shadow-[0_12px_30px_rgba(13,21,32,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               {project.title}
             </a>

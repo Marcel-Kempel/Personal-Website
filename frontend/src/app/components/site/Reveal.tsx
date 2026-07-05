@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { clsx } from "clsx";
 
 function useInView(threshold = 0.14) {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,16 +33,15 @@ export function FadeIn({
   className?: string;
 }) {
   const { ref, inView } = useInView();
+  const style = delay ? ({ "--reveal-delay": `${delay}s` } as React.CSSProperties) : undefined;
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 18 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+      className={clsx("reveal", inView && "is-visible", className)}
+      style={style}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
 import { clsx } from "clsx";
 
 type ButtonLinkProps = {
@@ -20,13 +19,11 @@ export function ButtonLink({
   download,
 }: ButtonLinkProps) {
   return (
-    <motion.a
+    <a
       href={href}
       download={download}
-      whileHover={{ y: -1 }}
-      whileTap={{ scale: 0.98 }}
       className={clsx(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "button-link inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         fullWidthOnMobile && "w-full sm:w-auto",
         variant === "primary"
           ? "bg-primary text-primary-foreground shadow-[0_10px_24px_rgba(13,21,32,0.12)] hover:bg-[#243755]"
@@ -36,7 +33,7 @@ export function ButtonLink({
       {icon}
       {children}
       {variant === "primary" && !icon ? <ArrowRight size={15} aria-hidden="true" /> : null}
-    </motion.a>
+    </a>
   );
 }
 
