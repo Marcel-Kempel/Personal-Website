@@ -1,6 +1,6 @@
 # Marcel Kempel Portfolio
 
-Personal portfolio/CV website for Marcel Kempel, focused on Wirtschaftsinformatik, Prozessautomatisierung, Digitalisierung, Datenanalyse, Reporting and practical IT implementation.
+Personal introduction and portfolio website for Marcel Kempel, focused on projects, certificates, Wirtschaftsinformatik, Digitalisierung, Datenanalyse, Reporting and practical IT implementation.
 
 ## Project Structure
 
@@ -12,6 +12,8 @@ Personal portfolio/CV website for Marcel Kempel, focused on Wirtschaftsinformati
 The frontend has explicit client routes for:
 
 - `/`
+- `/zertifikate`
+- `/zertifikate/<slug>`
 - `/projekte/anfrageprozess-digitalisieren`
 - `/projekte/excel-daten-zu-dashboard`
 - `/projekte/bpmn-zu-digitalem-ablauf`

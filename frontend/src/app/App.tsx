@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { Footer } from "./components/site/Footer";
 import { Navbar } from "./components/site/Navbar";
+import { CertificateDetailPage } from "./pages/CertificateDetailPage";
+import { CertificatesPage } from "./pages/CertificatesPage";
 import { HomePage } from "./pages/HomePage";
 import { LegalPage, legalPages } from "./pages/LegalPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
+import { getCertificateBySlug } from "./content";
 import { getProjectBySlug } from "./data/projects";
 
 function usePathname() {
@@ -56,7 +59,11 @@ export default function App() {
   const legalPage = legalPages[pathname as keyof typeof legalPages];
   const projectSlug = pathname.match(/^\/projekte\/([^/]+)$/)?.[1];
   const project = projectSlug ? getProjectBySlug(decodeURIComponent(projectSlug)) : undefined;
-  const isKnownRoute = pathname === "/" || Boolean(legalPage) || Boolean(project);
+  const certificateSlug = pathname.match(/^\/zertifikate\/([^/]+)$/)?.[1];
+  const certificate = certificateSlug ? getCertificateBySlug(decodeURIComponent(certificateSlug)) : undefined;
+  const isCertificatesRoute = pathname === "/zertifikate";
+  const isKnownRoute =
+    pathname === "/" || isCertificatesRoute || Boolean(certificate) || Boolean(legalPage) || Boolean(project);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -67,6 +74,10 @@ export default function App() {
       <main id="main-content">
         {legalPage ? (
           <LegalPage page={legalPage} />
+        ) : certificate ? (
+          <CertificateDetailPage certificate={certificate} />
+        ) : isCertificatesRoute ? (
+          <CertificatesPage />
         ) : project ? (
           <ProjectDetailPage project={project} />
         ) : isKnownRoute ? (

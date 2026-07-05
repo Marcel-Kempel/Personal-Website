@@ -1,19 +1,20 @@
-import { Download } from "lucide-react";
 import {
+  certificates,
   focusAreas,
   pillars,
   profileFacts,
-  roadmapSteps,
+  siteConfig,
   skillGroups,
-  timelineItems,
 } from "../content";
 import { projects } from "../data/projects";
-import { ButtonLink, PlaceholderButton } from "../components/site/ButtonLink";
+import { ButtonLink } from "../components/site/ButtonLink";
+import { CertificateCard } from "../components/site/CertificateCard";
 import { FocusCard, ProjectCard, SkillGroup } from "../components/site/Cards";
 import { ContactBlock } from "../components/site/ContactBlock";
-import { ProcessFlow } from "../components/site/ProcessFlow";
 import { FadeIn } from "../components/site/Reveal";
 import { SectionHeader, SectionLabel } from "../components/site/SectionHeader";
+
+const featuredCertificates = certificates.filter((certificate) => certificate.featured);
 
 export function HomePage() {
   return (
@@ -23,8 +24,8 @@ export function HomePage() {
       <AboutSection />
       <FocusAreasSection />
       <ProjectsSection />
+      <CertificatesSection />
       <SkillsSection />
-      <TimelineSection />
       <FutureDirectionSection />
       <ContactSection />
     </>
@@ -33,41 +34,75 @@ export function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="flex min-h-[88svh] items-center pt-24">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-16 lg:pb-20">
-        <div>
+    <section className="pt-28 pb-20 lg:pt-36 lg:pb-28">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-16">
+        <div className="max-w-4xl">
           <div className="hero-reveal hero-delay-0">
-            <SectionLabel>Portfolio / Wirtschaftsinformatik / Prozessautomatisierung</SectionLabel>
+            <SectionLabel>Persönliches Portfolio / Wirtschaftsinformatik</SectionLabel>
           </div>
 
-          <h1
-            className="hero-reveal hero-delay-1 max-w-4xl text-balance text-[2rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.06] lg:text-[3.5rem]"
-          >
-            Wirtschaftsinformatik zwischen Prozessen, Daten und Umsetzung.
+          <h1 className="hero-reveal hero-delay-1 max-w-4xl text-balance text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.06] lg:text-[4rem]">
+            Hi, ich bin Marcel Kempel.
           </h1>
 
-          <p
-            className="hero-reveal hero-delay-2 mt-7 max-w-2xl text-lg leading-8 text-muted-foreground"
-          >
-            Ich verbinde betriebswirtschaftliches Prozessverständnis mit technischer Umsetzung -
-            mit Fokus auf Automatisierung, Digitalisierung und datenbasierte Verbesserung.
+          <p className="hero-reveal hero-delay-2 mt-7 max-w-3xl text-lg leading-8 text-muted-foreground">
+            Ich studiere Wirtschaftsinformatik und interessiere mich dafür, wie Prozesse, Daten und
+            kleine digitale Lösungen im Alltag wirklich helfen können. Auf dieser Seite sammle ich
+            Projekte, Erfahrungen und Zertifikate, die meine fachliche Richtung zeigen.
           </p>
 
-          <div
-            className="hero-reveal hero-delay-3 mt-9 flex flex-col gap-3 sm:flex-row"
-          >
+          <div className="hero-reveal hero-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="#projekte">Projekte ansehen</ButtonLink>
-            <ButtonLink href="#lebenslauf" variant="secondary">
-              Lebenslauf anzeigen
+            <ButtonLink href="/zertifikate" variant="secondary">
+              Zertifikate ansehen
             </ButtonLink>
           </div>
         </div>
 
-        <div className="hero-reveal hero-delay-4">
-          <ProcessFlow />
+        <div className="hero-reveal hero-delay-4 lg:justify-self-end">
+          <HeroProfileImage />
+        </div>
+
+        <div className="hero-reveal hero-delay-4 grid gap-3 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+          {profileFacts.map((fact) => (
+            <div key={fact.label} className="rounded-lg border border-border bg-card p-5 shadow-sm">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
+                {fact.label}
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-foreground">{fact.value}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroProfileImage() {
+  return (
+    <figure className="relative mx-auto w-full max-w-[22rem] lg:mx-0">
+      <div className="aspect-[4/5] overflow-hidden rounded-lg border border-border bg-card shadow-[0_20px_55px_rgba(13,21,32,0.08)]">
+        {siteConfig.profileImageUrl ? (
+          <img
+            src={siteConfig.profileImageUrl}
+            alt={`Profilbild von ${siteConfig.name}`}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center bg-secondary/55 p-8 text-center">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-3xl font-extrabold text-primary-foreground shadow-[0_14px_32px_rgba(13,21,32,0.14)]">
+              {siteConfig.initials}
+            </div>
+            <figcaption className="mt-6 text-sm font-semibold text-foreground">
+              Profilbild
+            </figcaption>
+            <p className="mt-2 max-w-48 text-xs leading-5 text-muted-foreground">
+              Bilddatei kann später ergänzt werden.
+            </p>
+          </div>
+        )}
+      </div>
+    </figure>
   );
 }
 
@@ -175,9 +210,41 @@ function ProjectsSection() {
   );
 }
 
+function CertificatesSection() {
+  return (
+    <section id="zertifikate" className="bg-secondary/40 py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <FadeIn>
+          <SectionHeader
+            label="Nachweise"
+            title="Top-Zertifikate"
+            text="Eine kompakte Auswahl der wichtigsten Nachweise. Die vollständige Übersicht ist nach Kategorien sortiert."
+          />
+        </FadeIn>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {featuredCertificates.map((certificate, index) => (
+            <FadeIn key={`${certificate.title}-${index}`} delay={index * 0.07}>
+              <CertificateCard certificate={certificate} compact />
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.2}>
+          <div className="mt-10">
+            <ButtonLink href="/zertifikate" variant="secondary">
+              Alle Zertifikate ansehen
+            </ButtonLink>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function SkillsSection() {
   return (
-    <section id="skills" className="bg-secondary/40 py-24 lg:py-32">
+    <section id="skills" className="py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <FadeIn>
           <SectionHeader label="Kompetenzen" title="Skills & Werkzeuge" />
@@ -189,47 +256,6 @@ function SkillsSection() {
               <SkillGroup group={group} />
             </FadeIn>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TimelineSection() {
-  return (
-    <section id="lebenslauf" className="py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="max-w-3xl">
-          <FadeIn>
-            <SectionHeader label="Werdegang" title="Lebenslauf" />
-          </FadeIn>
-
-          <div className="relative mt-12">
-            <div className="absolute bottom-2 left-[5px] top-2 w-px bg-border" aria-hidden="true" />
-            <div className="space-y-10">
-              {timelineItems.map((item, index) => (
-                <FadeIn key={item.title} delay={index * 0.08}>
-                  <article className="grid grid-cols-[0.75rem_1fr] gap-6">
-                    <div className="relative z-10 mt-1.5 h-2.5 w-2.5 rounded-full bg-[#3B5FDB] ring-4 ring-background" />
-                    <div>
-                      <p className="font-mono text-xs text-muted-foreground">{item.date}</p>
-                      <h3 className="mt-1 text-base font-bold text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
-                    </div>
-                  </article>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-
-          <FadeIn delay={0.32}>
-            <div className="mt-12">
-              {/* TODO: Replace this placeholder with a link to the real CV PDF path, e.g. /Marcel-Kempel-Lebenslauf.pdf. */}
-              <PlaceholderButton icon={<Download size={15} aria-hidden="true" />}>
-                Lebenslauf als PDF herunterladen
-              </PlaceholderButton>
-            </div>
-          </FadeIn>
         </div>
       </div>
     </section>
@@ -253,7 +279,23 @@ function FutureDirectionSection() {
             className="absolute left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] top-4 hidden h-px bg-border sm:block"
             aria-hidden="true"
           />
-          {roadmapSteps.map((step, index) => (
+          {[
+            {
+              label: "Heute",
+              title: "Studium & Praxis",
+              text: "Wirtschaftsinformatik, Enterprise Architecture und eigene Portfolio-Projekte",
+            },
+            {
+              label: "Nächster Schritt",
+              title: "Mehr echte Umsetzungen",
+              text: "Projekte, Zertifikate und praktische Prototypen gezielt weiter ausbauen",
+            },
+            {
+              label: "Langfristig",
+              title: "Beratung & Umsetzung",
+              text: "Digitale Prozesse verständlich planen und pragmatisch realisieren",
+            },
+          ].map((step, index) => (
             <FadeIn key={step.label} delay={index * 0.09}>
               <article className="relative flex gap-5 sm:block">
                 <div className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">

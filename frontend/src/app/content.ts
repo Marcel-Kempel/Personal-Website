@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Marcel Kempel",
   initials: "MK",
+  profileImageUrl: "",
   email: "kontakt@marcel-kempel.de",
   linkedinLabel: "LinkedIn Profil ergänzen",
   linkedinUrl: "",
@@ -34,8 +35,8 @@ export function hasMissingLegalData() {
 export const navLinks = [
   { label: "Über mich", href: "/#ueber-mich" },
   { label: "Projekte", href: "/#projekte" },
+  { label: "Zertifikate", href: "/zertifikate" },
   { label: "Skills", href: "/#skills" },
-  { label: "Lebenslauf", href: "/#lebenslauf" },
   { label: "Kontakt", href: "/#kontakt" },
 ];
 
@@ -119,48 +120,66 @@ export const skillGroups = [
   },
 ];
 
-export const timelineItems = [
+export type Certificate = {
+  slug: string;
+  title: string;
+  issuer: string;
+  date: string;
+  category: string;
+  description: string;
+  imageUrl: string;
+  credentialUrl?: string;
+  featured?: boolean;
+};
+
+export const certificates: Certificate[] = [
   {
-    date: "2022 - heute",
-    title: "Studium Wirtschaftsinformatik",
+    slug: "datenanalyse-zertifikat",
+    title: "Datenanalyse-Zertifikat ergänzen",
+    issuer: "Anbieter / Hochschule",
+    date: "Jahr ergänzen",
+    category: "Daten & Reporting",
     description:
-      "Fokus auf Prozessmanagement, Datenanalyse, Softwareentwicklung und Enterprise Architecture.",
+      "Platz für ein relevantes Zertifikat aus Wirtschaftsinformatik, Datenanalyse, Prozessmanagement oder Softwareentwicklung.",
+    imageUrl: "/certificates/certificate-placeholder.svg",
+    featured: true,
   },
   {
-    date: "2023 - heute",
-    title: "Werkstudent Enterprise Architecture",
+    slug: "prozessmanagement-zertifikat",
+    title: "Prozessmanagement-Zertifikat ergänzen",
+    issuer: "Anbieter / Hochschule",
+    date: "Jahr ergänzen",
+    category: "Business & Prozesse",
     description:
-      "Praxiserfahrung in der Dokumentation und Analyse von Unternehmensarchitekturen und Geschäftsprozessen.",
+      "Hier kann später ein Zertifikat mit PDF, Credential-Link oder kurzer Einordnung ergänzt werden.",
+    imageUrl: "/certificates/certificate-placeholder.svg",
+    featured: true,
   },
   {
-    date: "2023 - heute",
-    title: "Hochschulprojekte",
-    description: "Praktische Projekte mit Datenanalyse, Prozessautomatisierung und Web-Technologien.",
+    slug: "webentwicklung-zertifikat",
+    title: "Webentwicklung-Zertifikat ergänzen",
+    issuer: "Anbieter / Hochschule",
+    date: "Jahr ergänzen",
+    category: "Web & Entwicklung",
+    description:
+      "Ein weiterer Platzhalter für Qualifikationen, die den fachlichen Schwerpunkt des Portfolios unterstützen.",
+    imageUrl: "/certificates/certificate-placeholder.svg",
   },
   {
-    date: "2024 - heute",
-    title: "Portfolio-Aufbau",
-    description: "Entwicklung praxisnaher Demo-Projekte für Prozessautomatisierung und Digitalisierung.",
+    slug: "automation-zertifikat",
+    title: "Automation-Zertifikat ergänzen",
+    issuer: "Anbieter / Hochschule",
+    date: "Jahr ergänzen",
+    category: "Daten & Reporting",
+    description:
+      "Platz für einen Nachweis zu Automatisierung, Skripting, Schnittstellen oder praktischer Tool-Umsetzung.",
+    imageUrl: "/certificates/certificate-placeholder.svg",
   },
 ];
 
-export const roadmapSteps = [
-  {
-    label: "Heute",
-    title: "Studium & Praxis",
-    text: "Studium, Enterprise Architecture, Portfolio-Projekte",
-  },
-  {
-    label: "Nächster Schritt",
-    title: "Bachelorarbeit",
-    text: "Bachelorarbeit und vertiefte Prozessautomatisierung",
-  },
-  {
-    label: "Langfristig",
-    title: "Beratung & Umsetzung",
-    text: "Beratung und Umsetzung für digitale Prozesse im Mittelstand",
-  },
-];
+export function getCertificateBySlug(slug: string) {
+  return certificates.find((certificate) => certificate.slug === slug);
+}
 
 export const processNodes = [
   { step: "01", label: "Manueller Prozess", sub: "Papier, E-Mail, Tabellen" },
